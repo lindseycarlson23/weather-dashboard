@@ -62,23 +62,50 @@ function getWeather (city) {
 
             let printedCityName = getCity.value;
             console.log(printedCityName);
+            var currentCityElem = document.getElementById("city-name");
+            currentCityElem.innerHTML = printedCityName;
 
             let iconCode = data.weather[0].icon;
             console.log(iconCode);
             let iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
             console.log(iconUrl);
+            var img = document.createElement('img');
+            img.src = iconUrl;
+            var src = document.getElementById('icon');
+            src.append(img);
+            
             
             let currentDate = dayjs().format('MMM DD, YYYY');
             console.log(currentDate);
+            var currentDateElem = document.getElementById("date");
+            currentDateElem.innerHTML = currentDate;
                        
             let temperature = data.main.temp;
             console.log(temperature);
+            var currentTempElem = document.getElementById("temperature");
+            currentTempElem.innerHTML = "Temperature: "+temperature;
 
             let humidity = data.main.humidity;
             console.log(humidity);
+            var currentHumidityElem = document.getElementById("humidity");
+            currentHumidityElem.innerHTML = "Humidity: "+humidity;
 
             let windspeed = data.wind.speed;
             console.log(windspeed);
+
+            // var currentConditions = [printedCityName, currentDate, "temperature: "+ temperature, humidity, windspeed]
+
+            // for (var i = 0; i = currentConditions.length; i++) {
+            //     let currentConditions = document.createElement('li')
+            //     currentConditions.innerText = [i];
+            //     currentElem.append(currentConditions);
+            // }
+            
+            
+            // currentConditionsFact.innerText = "Temperature: "+temperature;
+            // currentElem.append(currentConditionsFact);
+            // currentConditionsFact.innerText = iconCode;
+
 
 
 
