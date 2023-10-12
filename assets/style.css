@@ -1,0 +1,13 @@
+
+body {
+    background-color: aliceblue;
+}
+
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+// var apiKey 8980709b01eacb693df9c072a37725fa
+// var city;
