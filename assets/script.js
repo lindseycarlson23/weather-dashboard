@@ -59,14 +59,31 @@ function getWeather (city) {
 
         .then(function(data) {
             console.log(data)
-            // let currentList = document.createElement('ul');
-            // let printedCityName = getCity.value;
-            // //let date = DAYJS stuff
-            // //icon representation of weather condition
-           
+
+            let printedCityName = getCity.value;
+            console.log(printedCityName);
+
+            let iconCode = data.weather[0].icon;
+            console.log(iconCode);
+            let iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+            console.log(iconUrl);
+            
+            let currentDate = dayjs().format('MMM DD, YYYY');
+            console.log(currentDate);
+                       
             let temperature = data.main.temp;
             console.log(temperature);
+
+            let humidity = data.main.humidity;
+            console.log(humidity);
+
+            let windspeed = data.wind.speed;
+            console.log(windspeed);
+
+
+
             
+
             
            
 
