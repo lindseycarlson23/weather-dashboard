@@ -13,27 +13,29 @@
 
 <body>
     <header class = "header">Weather Dashboard</header>
-    <h1>Search for a City:</h1>
-    <form>
-      <div class="remember">
-        <label for="entercity">Enter City:</label>
-        <input type="text" id="entercity">
-        <input type="submit" id="submitcity" value="Search">
-        <div id="saved-city-buttons"></div>
-      </div>
-      
-    </form>
+    <div id="search-box">
+      <h1>Search for a City:</h1>
+      <form>
+        <div class="remember">
+          <label for="entercity">Enter City:</label>
+          <input type="text" id="entercity">
+          <input type="submit" id="submitcity" value="Search">
+          <div id="saved-city-buttons"></div>
+        </div>
+      </form>
+    </div>
     
     
   
     <div>
-        <section id="current-weather">Current Weather</section>
-          <ul>
+        <section id="current-weather"></section>
+          <ul id="current-box">Current Weather
             <li id="city-name"></li>
             <li id="icon"></li>
             <li id="date"></li>
             <li id="temperature"></li>
             <li id="humidity"></li>
+            <li id="windspeed"></li>
           </ul>
         <section id="five-day-forecast">5 Day Forecast</section>
     </div>
