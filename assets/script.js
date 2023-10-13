@@ -47,61 +47,63 @@ displayCityButtons();
 
 function getWeather (city) {
 
-    // var currentElem = document.getElementById('current-weather');
-    // var baseApi = "https://api.openweathermap.org/data/2.5/weather";
-    // var apiKey = "8980709b01eacb693df9c072a37725fa";
-    // var apiUrl = baseApi + "?q=" +city+ "&units=imperial&appid=" + apiKey;
+    var currentElem = document.getElementById('current-weather');
+    var baseApi = "https://api.openweathermap.org/data/2.5/weather";
+    var apiKey = "8980709b01eacb693df9c072a37725fa";
+    var apiUrl = baseApi + "?q=" +city+ "&units=imperial&appid=" + apiKey;
 
-    // fetch(apiUrl)
-    //     .then(function(response) {
-    //         return response.json();
-    //     })
+    fetch(apiUrl)
+        .then(function(response) {
+            return response.json();
+        })
 
-    //     .then(function(data) {
-    //         // console.log(data)
+        .then(function(data) {
+            // console.log(data)
 
-    //         //CURRENT WEATHER
-    //         let printedCityName = data.name;
-    //         // console.log(printedCityName);
-    //         var currentCityElem = document.getElementById("city-name");
-    //         currentCityElem.innerHTML = printedCityName;
+            //CURRENT WEATHER
+            let printedCityName = data.name;
+            // console.log(printedCityName);
+            var currentCityElem = document.getElementById("city-name");
+            currentCityElem.innerHTML = printedCityName;
 
-    //         let iconCode = data.weather[0].icon;
-    //         // console.log(iconCode);
-    //         let iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
-    //         // console.log(iconUrl);
-    //         var img = document.createElement('img');
-    //         img.src = iconUrl;
-    //         var src = document.getElementById('icon');
-    //         src.append(img);
+            let iconCode = data.weather[0].icon;
+            // console.log(iconCode);
+            let iconUrl = "https://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+            // console.log(iconUrl);
+            var img = document.createElement('img');
+            img.src = iconUrl;
+            var src = document.getElementById('icon');
+            src.append(img);
                         
-    //         let currentDate = dayjs().format('MMM DD, YYYY');
-    //         // console.log(currentDate);
-    //         var currentDateElem = document.getElementById("date");
-    //         currentDateElem.innerHTML = currentDate;
+            let currentDate = dayjs().format('MMM DD, YYYY');
+            // console.log(currentDate);
+            var currentDateElem = document.getElementById("date");
+            currentDateElem.innerHTML = currentDate;
                        
-    //         let temperature = data.main.temp;
-    //         let decimal = Math.trunc(temperature);
-    //         // console.log(temperature);
-    //         var currentTempElem = document.getElementById("temperature");
-    //         currentTempElem.innerHTML = "Temperature: " +decimal+"\xB0";
+            let temperature = data.main.temp;
+            let decimal = Math.trunc(temperature);
+            // console.log(temperature);
+            var currentTempElem = document.getElementById("temperature");
+            currentTempElem.innerHTML = "Temperature: " +decimal+"\xB0";
 
-    //         let humidity = data.main.humidity;
-    //         // console.log(humidity);
-    //         var currentHumidityElem = document.getElementById("humidity");
-    //         currentHumidityElem.innerHTML = "Humidity: "+humidity+"%";
+            let humidity = data.main.humidity;
+            // console.log(humidity);
+            var currentHumidityElem = document.getElementById("humidity");
+            currentHumidityElem.innerHTML = "Humidity: "+humidity+"%";
 
-    //         let windspeed = data.wind.speed;
-    //         // console.log(windspeed);
-    //         var currentWindElem = document.getElementById("windspeed");
-    //         currentWindElem.innerHTML = "Windspeed: "+windspeed+"mph";
+            let windspeed = data.wind.speed;
+            // console.log(windspeed);
+            var currentWindElem = document.getElementById("windspeed");
+            currentWindElem.innerHTML = "Windspeed: "+windspeed+"mph";
 
-    //     })
+        })
 
             //5 DAY FORECAST
 
     
 
+
+            
     function forecastWeather() {
 
         var baseApiForecast = "https://api.openweathermap.org/data/2.5/forecast";
@@ -117,14 +119,23 @@ function getWeather (city) {
             .then(function(forecastData) {
             console.log(forecastData);
 
-            let forecastCityName = forecastData.city.name;
-            console.log(forecastCityName);
-            var forecastCityElem = document.getElementById("forecast-city-name");
-            forecastCityElem.innerHTML = forecastCityName;
+          
 
-            // for (i = 0; i > 0 && i < 6; i++) { 
+            // let forecastCityName = forecastData.city.name;
+            // console.log(forecastCityName);
+            // var forecastCityElem = document.getElementById("forecast-city-name");
+            // forecastCityElem.innerHTML = forecastCityName;
 
-            // //pull the 5 days, make them an array, and then put each one through the functions
+   
+
+            //pull the 5 days, make them an array, and then put each one through the functions
+
+
+            //function that gets all the data from the api for one box
+            //function that creates the object in the dom and adds it to the list
+            //loop that calls the first function and second function
+
+            
             let forecastIconCode = forecastData.list[1].weather[0].icon;
             console.log(forecastIconCode);
             let forecastIconUrl = "https://openweathermap.org/img/wn/" + forecastIconCode + "@2x.png";
@@ -134,7 +145,7 @@ function getWeather (city) {
             var src = document.getElementById('forecast-icon');
             src.append(img);
             
-    //forecast date                   
+    //forecast date -- NEED TO SPLIT AND FORMAT                
             var forecastDate = forecastData.list[1].dt_txt;
             console.log(forecastDate);
             var forecastDateElem = document.getElementById("forecast-date");
@@ -145,7 +156,7 @@ function getWeather (city) {
             let decimal = Math.trunc(forecastTemperature);
             console.log(decimal);
             var forecastTempElem = document.getElementById("forecast-temperature");
-            forecastTempElem.innerHTML = "Temperature: " +decimal+"\xB0";
+            forecastTempElem.innerHTML = "Temp: " +decimal+"\xB0";
     
     //forecast humidity
             let forecastHumidity = forecastData.list[1].main.humidity;
@@ -159,10 +170,18 @@ function getWeather (city) {
             var forecastWindElem = document.getElementById("forecast-windspeed");
             forecastWindElem.innerHTML = "Windspeed: "+forecastWindspeed+"mph";
             
-        } ) 
+    //day 2 forecast icon
+            forecastIconCode2 = forecastData.list[2].weather[0].icon;
+            console.log(forecastIconCode2);
+            forecastIconUrl2 = "https://openweathermap.org/img/wn/" + forecastIconCode2 + "@2x.png";
+            console.log(forecastIconUrl2);
+            img = document.createElement('img');
+            img.src = forecastIconUrl;
+            src = document.getElementById('forecast-icon2');
+            src.append(img);
 
-        
-            
+
+            } ) 
            
 
         }

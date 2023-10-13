@@ -9,6 +9,13 @@ body {
     justify-content: center;
 }
 
+.forecast-day {
+    border-style: solid;
+    list-style-type: none;
+    width: fit-content;
+    padding: 1.2em;
+}
+
 #current-box {
     border-style: solid;
     list-style-type:  none;
