@@ -16,6 +16,10 @@ body {
     padding: 1.2em;
 }
 
+.day-box {
+    border-style: solid;
+}
+
 #current-box {
     border-style: solid;
     list-style-type:  none;
@@ -26,3 +30,10 @@ body {
     border-style: solid;
 
 }
+
+#five-day-container {
+    border-style: solid;
+    display: flex;
+    justify-content: space-around;
+}
+
