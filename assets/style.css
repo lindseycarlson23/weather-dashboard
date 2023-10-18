@@ -7,6 +7,11 @@ body {
 .header {
     display: flex;
     justify-content: center;
+    font-size: 3em;
+    background-color: darkslateblue;
+    color: white;
+    height: 2em;
+    align-items: center;
 }
 
 .forecast-day {
@@ -28,7 +33,8 @@ body {
 
 #search-box {
     border-style: solid;
-
+    width: 33%;
+    
 }
 
 #five-day-container {

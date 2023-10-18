@@ -7,20 +7,28 @@ var submitBtn = document.getElementById('submitcity');
 
 var h1 = document.querySelector('h1');
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (getCity.value === "") {
-        return
-    };
-    getWeather(getCity.value);
-    displayCityButtons();
-})
+// form.addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     if (getCity.value === "") {
+//         return
+//     };
+//     getWeather(getCity.value);
+//     displayCityButtons();
+// })
 
 submitBtn.addEventListener('click', function() {
-    let previousCities = JSON.parse(localStorage.getItem('saved-cities')) || [];
-    previousCities.push(getCity.value);
-    localStorage.setItem('saved-cities', JSON.stringify(previousCities));
-
+    if (getCity.value === "") {
+        return;
+    }
+    // This is assuming there is an array object in local storage.
+    let previousCities = new Set(JSON.parse(localStorage.getItem('saved-cities')) || []);
+    // Adds the city input to the Set
+    previousCities.add(getCity.value);
+    // Puts the Set into localStorage by converting the Set into an Array first
+    localStorage.setItem('saved-cities', JSON.stringify(Array.from(previousCities)));
+    getWeather(getCity.value);
+    displayCityButtons();
+    
 })
 
 function savedCitySearchApi (event) {
@@ -44,19 +52,32 @@ function displayCityButtons () {
 displayCityButtons();
 
 
-function getWeather (city) {
+// CLEAR FUNCTION
 
+function clearContainer (elementId) {
+    document.getElementById(elementId).innerHTML="";
+}
+
+
+
+function getWeather (city) {
+    debugger;
     var currentElem = document.getElementById('current-weather');
     var baseApi = "https://api.openweathermap.org/data/2.5/weather";
     var apiKey = "8980709b01eacb693df9c072a37725fa";
     var apiUrl = baseApi + "?q=" +city+ "&units=imperial&appid=" + apiKey;
 
+    debugger;
     fetch(apiUrl)
         .then(function(response) {
+            debugger;
             return response.json();
         })
 
         .then(function(data) {
+            debugger;
+            clearContainer('five-day-container');
+            clearContainer('icon');
             // console.log(data)
 
             //CURRENT WEATHER
@@ -96,6 +117,13 @@ function getWeather (city) {
             currentWindElem.textContent = "Windspeed: "+windspeed+"mph";
 
         })
+        .catch (function(error){
+                debugger;
+        });
+
+        // CLEAR
+
+
 
             //5 DAY FORECAST
 
@@ -207,66 +235,7 @@ function getWeather (city) {
                 let dayOneData = prepareData(forecastData, i);
                 renderDayBlock(dayOneData);
             }
-            // let forecastCityName = forecastData.city.name;
-            // console.log(forecastCityName);
-            // var forecastCityElem = document.getElementById("forecast-city-name");
-            // forecastCityElem.textContent = forecastCityName;
-
-   
-
-            //pull the 5 days, make them an array, and then put each one through the functions
-
-
-            //function that gets all the data from the api for one box
-            //function that creates the object in the dom and adds it to the list
-            //loop that calls the first function and second function
-
-            
-    //         let forecastIconCode = forecastData.list[1].weather[0].icon;
-    //         console.log(forecastIconCode);
-    //         let forecastIconUrl = "https://openweathermap.org/img/wn/" + forecastIconCode + "@2x.png";
-    //         console.log(forecastIconUrl);
-    //         var img = document.createElement('img');
-    //         img.src = forecastIconUrl;
-    //         var src = document.getElementById('forecast-icon');
-    //         src.append(img);
-            
-    // //forecast date -- NEED TO SPLIT AND FORMAT                
-    //         var forecastDate = forecastData.list[1].dt_txt;
-    //         console.log(forecastDate);
-    //         var forecastDateElem = document.getElementById("forecast-date");
-    //         forecastDateElem.textContent = forecastDate;
-    
-    // //forecast temperature
-    //         let forecastTemperature = forecastData.list[1].main.temp;
-    //         let decimal = Math.trunc(forecastTemperature);
-    //         console.log(decimal);
-    //         var forecastTempElem = document.getElementById("forecast-temperature");
-    //         forecastTempElem.textContent = "Temp: " +decimal+"\xB0";
-    
-    // //forecast humidity
-    //         let forecastHumidity = forecastData.list[1].main.humidity;
-    //         console.log(forecastHumidity);
-    //         var forecastHumidityElem = document.getElementById("forecast-humidity");
-    //         forecastHumidityElem.textContent = "Humidity: "+forecastHumidity+"%";
-
-    // //forecast windspeed        
-    //         let forecastWindspeed = forecastData.list[1].wind.speed;
-    //         console.log(forecastWindspeed);
-    //         var forecastWindElem = document.getElementById("forecast-windspeed");
-    //         forecastWindElem.textContent = "Windspeed: "+forecastWindspeed+"mph";
-            
-    // //day 2 forecast icon
-    //         forecastIconCode2 = forecastData.list[2].weather[0].icon;
-    //         console.log(forecastIconCode2);
-    //         forecastIconUrl2 = "https://openweathermap.org/img/wn/" + forecastIconCode2 + "@2x.png";
-    //         console.log(forecastIconUrl2);
-    //         img = document.createElement('img');
-    //         img.src = forecastIconUrl;
-    //         src = document.getElementById('forecast-icon2');
-    //         src.append(img);
-
-
+ 
             } ) 
            
 
