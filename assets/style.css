@@ -1,8 +1,20 @@
 
 body {
     background-color: lightskyblue;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
+button {
+    margin: .5em;
+}
+
+p {
+    font-size: 1.6em;
+}
+
+section {
+    text-align: center;
+}
 
 .header {
     display: flex;
@@ -14,32 +26,49 @@ body {
     align-items: center;
 }
 
-.forecast-day {
-    border-style: solid;
-    list-style-type: none;
-    width: fit-content;
-    padding: 1.2em;
-}
-
-.day-box {
-    border-style: solid;
+#submitcity {
+    margin: .5em;
 }
 
 #current-box {
-    border-style: solid;
-    list-style-type:  none;
-    width: fit-content;
-}
-
-#search-box {
-    border-style: solid;
-    width: 33%;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    background-color: lightblue;
     
 }
 
-#five-day-container {
+#current-weather {
+ 
+    
+}
+
+#search-box {
+    text-align: center;
     border-style: solid;
+    background-color: white;
+    width: 33%;
+    margin: 2em;
+    align-items: center;
+    box-shadow: 0 0 10px #777777;
+    padding: 1em;
+}
+
+#submit-city {
+    display: flex;
+    align-content: space-around;
+    margin: 2em;
+}
+
+
+
+#five-day-container {
     display: flex;
     justify-content: space-around;
+    list-style-type: none;
+}
+
+#big-container {
+    align-items: center;
 }
 

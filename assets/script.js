@@ -84,7 +84,7 @@ function getWeather (city) {
             let printedCityName = data.name;
             // console.log(printedCityName);
             var currentCityElem = document.getElementById("city-name");
-            currentCityElem.textContent = printedCityName;
+            currentCityElem.textContent = "Current Weather for " + printedCityName;
 
             let currentIconElem = document.getElementById('icon');
             let iconCode = data.weather[0].icon;
@@ -104,7 +104,7 @@ function getWeather (city) {
             let decimal = Math.trunc(temperature);
             // console.log(temperature);
             var currentTempElem = document.getElementById("temperature");
-            currentTempElem.textContent = "Temperature: " +decimal+"\xB0";
+            currentTempElem.textContent = "Temp: " +decimal+"\xB0";
 
             let humidity = data.main.humidity;
             // console.log(humidity);
@@ -118,7 +118,7 @@ function getWeather (city) {
 
         })
         .catch (function(error){
-                debugger;
+                // debugger;
         });
 
         // CLEAR
