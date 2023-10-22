@@ -22,6 +22,8 @@
   By entering a city name in the search field, you will see both the current weather and a five day forecast. You can return to previous searches by clicking on the city name buttons.
 
 ![alt text](assets/images/Weather%20Dashboard%20Screenshot.png)
+
+Video demonstrating functionality: https://watch.screencastify.com/v/nIrvXz7MG6zK0LyDB3Q6
   
   ## License
     
