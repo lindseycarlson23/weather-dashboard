@@ -1,11 +1,15 @@
 
 body {
     background-color: lightskyblue;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: darkslateblue;
 }
 
 button {
     margin: .5em;
+    padding: .2em;
+    border-radius: .5em;
+    color: darkslateblue;
 }
 
 p {
@@ -14,6 +18,18 @@ p {
 
 section {
     text-align: center;
+}
+
+li {
+    list-style-type: none;
+}
+
+.day {
+    border-style: solid;
+    justify-content: left;
+    padding: .5em;
+    border-radius: .5em;
+    
 }
 
 .header {
@@ -26,21 +42,37 @@ section {
     align-items: center;
 }
 
+.center {
+    margin: auto;
+    width: 50%;
+    
+}
+
+.remember {
+    justify-content: center;
+}
+
 #submitcity {
-    margin: .5em;
+    display: flex; */
+    align-content: space-around;
+    margin: 2em;
+    padding: .5em;
+    justify-content: center;
+    color: darkslateblue;
+    border-radius: .5em;
 }
 
 #current-box {
     display: flex;
     justify-content: space-around;
     list-style-type: none;
-    background-color: lightblue;
-    
-}
+    background-color: lightcyan;
+    align-items: center;
+    color: darkslateblue;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 1em;
 
-#current-weather {
- 
-    
 }
 
 #search-box {
@@ -52,12 +84,14 @@ section {
     align-items: center;
     box-shadow: 0 0 10px #777777;
     padding: 1em;
+    border-radius: 1em;
 }
 
-#submit-city {
+#submitcity {
     display: flex;
     align-content: space-around;
     margin: 2em;
+    padding: .5em;
 }
 
 
@@ -68,7 +102,5 @@ section {
     list-style-type: none;
 }
 
-#big-container {
-    align-items: center;
-}
+
 

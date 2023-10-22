@@ -3,18 +3,9 @@ var forgetCity = document.querySelector('.forget');
 var form = document.querySelector('form');
 var getCity = document.getElementById('entercity');
 var submitBtn = document.getElementById('submitcity');
-// var forgetBtn = document.querySelector('#forgetcity');
-
 var h1 = document.querySelector('h1');
 
-// form.addEventListener('submit', function(e) {
-//     e.preventDefault();
-//     if (getCity.value === "") {
-//         return
-//     };
-//     getWeather(getCity.value);
-//     displayCityButtons();
-// })
+
 
 submitBtn.addEventListener('click', function() {
     if (getCity.value === "") {
@@ -61,21 +52,18 @@ function clearContainer (elementId) {
 
 
 function getWeather (city) {
-    debugger;
     var currentElem = document.getElementById('current-weather');
     var baseApi = "https://api.openweathermap.org/data/2.5/weather";
     var apiKey = "8980709b01eacb693df9c072a37725fa";
     var apiUrl = baseApi + "?q=" +city+ "&units=imperial&appid=" + apiKey;
 
-    debugger;
     fetch(apiUrl)
         .then(function(response) {
-            debugger;
+           
             return response.json();
         })
 
         .then(function(data) {
-            debugger;
             clearContainer('five-day-container');
             clearContainer('icon');
             // console.log(data)
@@ -118,19 +106,17 @@ function getWeather (city) {
 
         })
         .catch (function(error){
-                // debugger;
+                
         });
+       
 
-        // CLEAR
+    //5 DAY FORECAST
 
-
-
-            //5 DAY FORECAST
-
-    /*
-    renders one day block of data into the dom
-    */       
+    
+    // renders one day block of data into the dom
+         
     function renderDayBlock(dayData) {
+        
         var ul = document.createElement('ul');
         var liDate = document.createElement('li');
         var date = dayData.date
@@ -138,49 +124,32 @@ function getWeather (city) {
         liDate.textContent = dayjs(dateArray[0]).format('MMM DD, YYYY')
         ul.append(liDate);
         var dayDiv = document.createElement('div');
-        // we want to createElement div
         dayDiv.setAttribute('class', 'day');
-        // then we want to setAttribute for that div ('class', 'day')
-
-        // then append the img and ul to the ^^^ above div
+      
         let img = document.createElement('img');
         let iconUrl = dayData.iconUrl;
         img.src = iconUrl;
         dayDiv.append(img);
         dayDiv.append(ul);
-        // then append that div to the five-day-container
-
-        // instead of appending the ul to the five-day-container
-        // we'll just append it to our newly created div
-        
-        // var src = document.getElementById('five-day-container');
         
         var liTemp = document.createElement('li');
         liTemp.textContent = "Temp: "+dayData.temp+"\xB0";
         ul.append(liTemp);
-        // var container = document.getElementById("five-day-container");
-        // container.append(ul);
+       
         
         var liHumidity = document.createElement('li');
         liHumidity.textContent = "Humidity: "+dayData.humidity+"%";
         ul.append(liHumidity);
-        // var container = document.getElementById("five-day-container");
-        // container.append(ul);
+        
         
         var liWindspeed = document.createElement('li');
         liWindspeed.innerText = "Windspeed: "+dayData.windspeed+"mph";
         ul.append(liWindspeed);
-        // var container = document.getElementById("five-day-container");
-        // container.append(ul);
         
-        // here is where you'll append your new div to the five-day-container
         var container = document.getElementById("five-day-container");
-        container.append(dayDiv)
-    }
-    /* 
-    pass response object and get day n and return an object containing day n data
-    dayNumber has to be a value between 1 and 5
-    */
+        container.append(dayDiv);        
+    };
+    
     function prepareData(forecastData, dayNumber) {
         let forecastIconCode = forecastData.list[dayNumber].weather[0].icon;
         console.log(forecastIconCode);
@@ -228,18 +197,13 @@ function getWeather (city) {
             })
 
             .then(function(forecastData) {
-            console.log(forecastData);
 
-            
-            for (var i = 0; i <= 40; i+=8) {
-                let dayOneData = prepareData(forecastData, i);
-                renderDayBlock(dayOneData);
-            }
- 
-            } ) 
-           
-
-        }
+                for (var i = 0; i <= 40; i+=8) {
+                    let dayOneData = prepareData(forecastData, i);
+                    renderDayBlock(dayOneData);
+                }
+            })           
+    }
 
     forecastWeather();
 }
