@@ -23,8 +23,7 @@
 
 ![alt text](assets/images/Weather%20Dashboard%20Screenshot.png)
 
-Video demonstrating functionality: https://watch.screencastify.com/v/nIrvXz7MG6zK0LyDB3Q6
-  
+ 
   ## License
     
   This project uses the MIT license.
